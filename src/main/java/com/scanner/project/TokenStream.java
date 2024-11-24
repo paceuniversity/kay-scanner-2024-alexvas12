@@ -48,7 +48,7 @@ public class TokenStream {
 
 		// First check for whitespaces and bypass them
 		skipWhiteSpace();
-		if(isEof) return null;
+		//if(isEof) return null;
 		// Then check for a comment, and bypass it
 		// but remember that / may also be a division operator.
 		while (nextChar == '/') {
@@ -70,7 +70,7 @@ public class TokenStream {
 
 			}
 			skipWhiteSpace();
-			if(isEof) return null;
+			//if(isEof) return null;
 			else {
 				// A slash followed by anything else must be an operator.
 				t.setValue("/");
@@ -114,6 +114,11 @@ public class TokenStream {
 				{
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
+					return t;
+				}
+				else
+				{
+					t.setValue("<");
 				}
 				return t;
 			case '>':
@@ -123,6 +128,7 @@ public class TokenStream {
 				{
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
+					return t;
 				}
 				return t;
 			case '=':
@@ -132,6 +138,7 @@ public class TokenStream {
 				{
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
+					return t;
 				}
 				else
 				{
@@ -145,6 +152,7 @@ public class TokenStream {
 				{
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
+					return t;
 				}
 				return t;
 			case '|':
@@ -202,6 +210,7 @@ public class TokenStream {
 			// now see if this is a keyword
 			if (isKeyword(t.getValue())) {
 				t.setType("Keyword");
+				return t;
 			} else if (t.getValue().equals("True") || t.getValue().equals("False")) {
 				t.setType("Literal");
 			}
