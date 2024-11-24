@@ -48,7 +48,8 @@ public class TokenStream {
 
 		// First check for whitespaces and bypass them
 		skipWhiteSpace();
-		//if(isEof) return null;
+		if(isEof) return null;
+		
 		// Then check for a comment, and bypass it
 		// but remember that / may also be a division operator.
 		while (nextChar == '/') {
@@ -62,15 +63,15 @@ public class TokenStream {
 				{
 					nextChar=readChar();
 					
-					 if (isEof) {
-						 return t;
-					 }
+					 //if (isEof) {
+					//	 return t;
+					 //}
 				}
 				// look for <cr>, <lf>, <ff>
-
+				skipWhiteSpace();
+				if(isEof) return null;
 			}
-			skipWhiteSpace();
-			if(isEof) return null;
+			
 			else {
 				// A slash followed by anything else must be an operator.
 				t.setValue("/");
