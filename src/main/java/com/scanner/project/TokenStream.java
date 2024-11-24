@@ -70,7 +70,7 @@ public class TokenStream {
 
 			}
 			skipWhiteSpace();
-			//if(isEof) return null;
+			if(isEof) return null;
 			else {
 				// A slash followed by anything else must be an operator.
 				t.setValue("/");
