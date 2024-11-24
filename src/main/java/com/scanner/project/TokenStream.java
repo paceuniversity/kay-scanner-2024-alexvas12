@@ -129,6 +129,8 @@ public class TokenStream {
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
 					return t;
+				}else{
+					t.setValue(">");
 				}
 				return t;
 			case '=':
@@ -153,6 +155,8 @@ public class TokenStream {
 					t.setValue(t.getValue()+nextChar);
 					nextChar=readChar();
 					return t;
+				}else{
+					t.setValue("!");
 				}
 				return t;
 			case '|':
